@@ -1,0 +1,63 @@
+
+{% extends 'header.html' %}
+{% block main_body %}
+      <div class="container-fluid row">
+
+    <h1 class = 'text-center'>This will be the payment gateway for accepting the Payment!!!</h1>
+    <marquee behavior="" direction="">All the Disabled Input will be automatically filled for a particualr student!!!(The Student has to just Select the mess of his/her choice)
+    </marquee>
+    <div class="row my-4">
+        <div class="col-6">
+            <input class="form-control" type="text" value="YOUR NAME" aria-label="Disabled input example" disabled readonly>
+        </div>
+        <div class="col-6">
+            <input class="form-control" type="text" value="{{rollno}}" aria-label="Disabled input example" disabled readonly>
+        </div>
+    </div>
+    <form action="/mess/registration" method = 'post'>
+    <div class="row my-4">
+        <div class="col-6">
+            <select class="form-control" type="text"  aria-label="Disabled input example"name = "Mess_Name" >
+                <option value="Karavali (VEG)">Karavali (VEG)</option>
+                <option value="Aravali (VEG)">Aravali (VEG)</option>
+                <option value="Vindhya (VEG)">Vindhya (VEG)</option>
+                <option value="Satpura (VEG)">Satpura (VEG)</option>
+                <option value="Nilgiri (NON-VEG)">Nilgiri (NON-VEG)</option>
+                <option value="Trishul (NON-VEG)">Trishul (NON-VEG)</option>
+                <option value="Chaitanya (NON-VEG)">Chaitanya (NON-VEG)</option>
+                <option value="Mega Mess (NON-VEG)">Mega Mess (NON-VEG)</option>
+            </select>
+            <h6>*Select Your Mess From Above List</h6>
+        </div>
+        <div class="col-6">
+            <input class="form-control" type="text" value="YOUR BLOCK NUMBER" aria-label="Disabled input example" disabled readonly>
+        </div>
+    </div>
+    <div class="row my-4">
+        <div class="col-6">
+            <input class="form-control" type="text" value="YOUR ROOM NUMBER" aria-label="Disabled input example" disabled readonly>
+        </div>
+        <div class="col-6">
+            <input class="form-control" type="text" value="YOUR BRANCH" aria-label="Disabled input example" disabled readonly>
+        </div>
+    </div>
+    <div class = "row my-2">
+       <div class="col-5"></div>
+       <div class="col-2">
+        <input class="form-control" type="text" value="₹10,000" aria-label="Disabled input example" disabled readonly>
+    
+       </div>
+       <div class="col-5"></div>
+    </div>
+    <div class = "row my-2">
+       <div class="col-5"></div>
+       <div class="col-2">
+           
+
+               <button type ="submit" class = "btn btn-primary">Proceed to Payment</button>
+           </form>
+       </div>
+       <div class="col-5"></div>
+    </div>
+      </div>
+      {% endblock %}

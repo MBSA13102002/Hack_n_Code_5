@@ -1,0 +1,27 @@
+
+{% extends 'header.html' %}
+{% block main_body %}
+      <div class="container-fluid row">
+          <h2 class = "text-center my-4">You have Selected {{mess_name}} Mess</h2>
+          <div class="row"  id="Button_Selection">
+              <div class="col-3"></div>
+              <div class="col-3">
+                <form action="/mess/payments" method = "post">
+                <button class = 'btn-lg btn-success' >Payment Successfull</button>
+              </form>
+              </div>
+              <div class="col-3">
+                <button class = 'btn-lg btn-danger' onclick = "Payment_Unsucess()">Payment Unsuccessfull</button>
+              </div>
+              <div class="col-3"></div>
+          </div>
+          <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+  
+    </div>
+   <script>
+       function Payment_Unsucess(){
+           window.location.assign('/mess/registration')
+       }
+    
+   </script>
+   {% endblock %}

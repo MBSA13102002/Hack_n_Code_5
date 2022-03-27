@@ -1,0 +1,63 @@
+
+{% extends 'header.html' %}
+{% block main_body %}
+<div class="container-fluid row">
+
+  <h1 class = 'text-center'>This will be the  gateway for Room Booking!!!</h1>
+  <marquee behavior="" direction="">All the Disabled Input will be automatically filled for a particualr student!!!(The Student has to just Select the mess of his/her choice)
+  </marquee>
+  <div class="row my-4">
+      <div class="col-6">
+          <input class="form-control" type="text" value="YOUR NAME" aria-label="Disabled input example" disabled readonly>
+      </div>
+      <div class="col-6">
+          <input class="form-control" type="text" value="{{rollno}}" aria-label="Disabled input example" disabled readonly>
+      </div>
+  </div>
+  <form action="/hostel/registration" method = 'post'>
+  <div class="row my-4">
+      <div class="col-6">
+          <select class="form-control" type="text"  aria-label="Disabled input example" name = "Hostel_Name" >
+              <option value="Block-1 (Karavali)">Block-1 (Karavali)</option>
+              <option value="Block-2 (Aravali)">Block-2 (Aravali)</option>
+              <option value="Block-3 (Vindhya)">Block-3 (Vindhya)</option>
+              <option value="Block-4 (Satpura)">Block-4 (Satpura)</option>
+              <option value="Block-5 (Nilgiri)">Block-5 (Nilgiri)</option>
+              <option value="Block-6 (Trishul)">Block-6 (Trishul)</option>
+              <option value="Block-7 (Sahyadri)">Block-7 (Sahyadri)</option>
+              <option value="MT-1 (Everest)">Block-7 (Everest)</option>
+              <option value="MT-2 (Himalaya)">Block-7 (Himalaya)</option>
+              <option value="MT-3 (Kailash)">Block-7 (Kailash)</option>
+         
+          </select>
+          <h6>*Select Your Hostel From Above List</h6>
+      </div>
+      <div class="col-6">
+          <input class="form-control" type="text" value="YOUR BLOCK NUMBER" aria-label="Disabled input example" disabled readonly>
+      </div>
+  </div>
+  <div class="row my-4">
+      <div class="col-6">
+          <input class="form-control" type="text" value="YOUR BRANCH" aria-label="Disabled input example" disabled readonly>
+      </div>
+  </div>
+  <div class = "row my-2">
+     <div class="col-5"></div>
+     <div class="col-2">
+      <input class="form-control" type="text" value="₹9,200" aria-label="Disabled input example" disabled readonly>
+  
+     </div>
+     <div class="col-5"></div>
+  </div>
+  <div class = "row my-2">
+     <div class="col-5"></div>
+     <div class="col-2">
+         
+
+             <button type ="submit" class = "btn btn-primary">Proceed to Payment</button>
+         </form>
+     </div>
+     <div class="col-5"></div>
+  </div>
+    </div>
+      {% endblock %}

@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+</head>
+<style>
+    *,
+    *:before,
+    *:after {
+      box-sizing: border-box;
+    }
+    body{
+        background-image: url("../static/hjk.png");
+        
+    }
+    
+    html {
+      font-size: 16px;
+
+    }
+    
+    .hostel {
+      margin: 20px auto;
+      max-width: 300px;
+    }
+    
+    .warden {
+      height: 250px;
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+      border-bottom: 5px solid #080808;
+    }
+    .warden:before {
+      content: "";
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 500px;
+      width: 100%;
+    
+      border-right: 5px solid #070606;
+      border-top: 5px solid #111010;
+      border-left: 5px solid #141212;
+
+    }
+    .warden h1 {
+      width: 60%;
+      margin: 100px auto 35px auto;
+    }
+    
+    .exit {
+      position: relative;
+      height: 50px;
+    }
+    .exit:before, .exit:after {
+      content: "EXIT";
+      font-size: 14px;
+      line-height: 18px;
+      padding: 0px 2px;
+      font-family: "Arial Narrow", Arial, sans-serif;
+      display: block;
+      position: absolute;
+      background: rgb(165, 202, 165);
+      color: white;
+      top: 50%;
+      transform: translate(0, -50%);
+    }
+    .exit:before {
+      left: 0;
+    }
+    .exit:after {
+      right: 0;
+    }
+    
+    .floors {
+      border-right: 5px solid #0e0d0d;
+      border-left: 5px solid #070606;
+      border-bottom: 5px solid #131111;
+    }
+    
+    ol {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    
+    .rooms {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      justify-content: flex-start;
+    }
+    
+    .room {
+      display: flex;
+      flex: 0 0 14.2857142857%;
+      padding: 5px;
+      position: relative;
+      
+    }
+    .room:nth-child(3) {
+      margin-right: 14.2857142857%;
+    }
+    .room input[type=checkbox] {
+      position: absolute;
+      opacity: 0;
+    }
+    .room input[type=checkbox]:checked + label {
+      background: #bada55;
+      -webkit-animation-name: rubberBand;
+      animation-name: rubberBand;
+      animation-duration: 300ms;
+      animation-fill-mode: both;
+    
+    }
+    .room input[type=checkbox]:disabled + label {
+      background: #dddddd;
+      text-indent: -9999px;
+      overflow: hidden;
+    }
+    .room input[type=checkbox]:disabled + label:after {
+      content: "X";
+      text-indent: 0;
+      position: absolute;
+      top: 4px;
+      left: 50%;
+      transform: translate(-50%, 0%);
+    }
+    .room input[type=checkbox]:disabled + label:hover {
+      box-shadow: none;
+      cursor: not-allowed;
+    }
+    .room label {
+      display: block;
+      position: relative;
+      width: 100%;
+      text-align: center;
+      font-size: 14px;
+      font-weight: bold;
+      line-height: 1.5rem;
+      padding: 4px 0;
+      background: #d81e1e;
+      border-radius: 5px;
+      animation-duration: 300ms;
+      animation-fill-mode: both;
+    }
+    .room label:before {
+      content: "";
+      position: absolute;
+      width: 75%;
+      height: 75%;
+      top: 1px;
+      left: 50%;
+      transform: translate(-50%, 0%);
+      background: rgba(255, 255, 255, 0.4);
+      border-radius: 3px;
+    }
+    .room label:hover {
+      cursor: pointer;
+      box-shadow: 0 0 0px 2px #2731ff;
+    }
+    
+    @-webkit-keyframes rubberBand {
+      0% {
+        -webkit-transform: scale16(1, 1, 1);
+        transform: scale16(1, 1, 1);
+      }
+      30% {
+        -webkit-transform: scale16(1.25, 0.75, 1);
+        transform: scale16(1.25, 0.75, 1);
+      }
+      40% {
+        -webkit-transform: scale16(0.75, 1.25, 1);
+        transform: scale16(0.75, 1.25, 1);
+      }
+      50% {
+        -webkit-transform: scale16(1.15, 0.85, 1);
+        transform: scale16(1.15, 0.85, 1);
+      }
+      65% {
+        -webkit-transform: scale16(0.95, 1.05, 1);
+        transform: scale16(0.95, 1.05, 1);
+      }
+      75% {
+        -webkit-transform: scale16(1.05, 0.95, 1);
+        transform: scale16(1.05, 0.95, 1);
+      }
+      100% {
+        -webkit-transform: scale16(1, 1, 1);
+        transform: scale16(1, 1, 1);
+      }
+    }
+    @keyframes rubberBand {
+      0% {
+        -webkit-transform: scale16(1, 1, 1);
+        transform: scale16(1, 1, 1);
+      }
+      30% {
+        -webkit-transform: scale16(1.25, 0.75, 1);
+        transform: scale16(1.25, 0.75, 1);
+      }
+      40% {
+        -webkit-transform: scale16(0.75, 1.25, 1);
+        transform: scale16(0.75, 1.25, 1);
+      }
+      50% {
+        -webkit-transform: scale16(1.15, 0.85, 1);
+        transform: scale16(1.15, 0.85, 1);
+      }
+      65% {
+        -webkit-transform: scale16(0.95, 1.05, 1);
+        transform: scale16(0.95, 1.05, 1);
+      }
+      75% {
+        -webkit-transform: scale16(1.05, 0.95, 1);
+        transform: scale16(1.05, 0.95, 1);
+      }
+      100% {
+        -webkit-transform: scale16(1, 1, 1);
+        transform: scale16(1, 1, 1);
+      }
+    }
+    .rubberBand {
+      -webkit-animation-name: rubberBand;
+      animation-name: rubberBand;
+    }
+</style>
+<body>
+    <div class="hostel">
+        <div class="warden">
+          <h1>{{Hostel_Name}}</h1>
+ 
+        </div>
+
+        <ol class="cabin floors">
+          <li class="row row--1">
+         
+            <ol class="rooms" type="A">
+              
+              <li class="room">
+                <input type="checkbox" disabled id="1" />
+                <label for="1">1</label>
+              </li>
+              <li class="room">
+                <input type="checkbox" id="2" />
+                <label for="2">2</label>
+              </li>
+              <li class="room">
+                <input type="checkbox" id="3" />
+                <label for="3">3</label>
+              </li>
+              <li class="room">
+                <input type="checkbox" id="4" />
+                <label for="4">4</label>
+              </li>
+              <li class="room">
+                <input type="checkbox" id="5" />
+                <label for="5">5</label>
+              </li>
+              <li class="room">
+                <input type="checkbox" id="6" />
+                <label for="6">6</label>
+              </li>
+            </ol>
+          </li>
+          <li class="row row--2">
+            <ol class="rooms" type="A">
+              <li class="room">
+                <input type="checkbox" id="7" />
+                <label for="7">7</label>
+              </li>
+              <li class="room">
+                <input type="checkbox" id="8" />
+                <label for="8">8</label>
+              </li>
+              <li class="room">
+                <input type="checkbox" id="9" />
+                <label for="9">9</label>
+              </li>
+              <li class="room">
+                <input type="checkbox" id="10" />
+                <label for="10">10</label>
+              </li>
+              <li class="room">
+                <input type="checkbox" id="2E" />
+                <label for="2E">11</label>
+              </li>
+              <li class="room">
+                <input type="checkbox" id="12" />
+                <label for="12">12</label>
+              </li>
+            </ol>
+          </li>
+          <li class="row row--3">
+            <ol class="rooms" type="A">
+              <li class="room">
+                <input type="checkbox" id="13" />
+                <label for="13">13</label>
+              </li>
+              <li class="room">
+                <input type="checkbox" id="14" />
+                <label for="14">14</label>
+              </li>
+              <li class="room">
+                <input type="checkbox" id="15" />
+                <label for="15">15</label>
+              </li>
+              <li class="room">
+                <input type="checkbox" id="16" />
+                <label for="16">16</label>
+              </li>
+              <li class="room">
+                <input type="checkbox" id="17" />
+                <label for="17">17</label>
+              </li>
+              <li class="room">
+                <input type="checkbox" id="18" />
+                <label for="18">18</label>
+              </li>
+            </ol>
+          </li>
+          <li class="row row--4">
+            <ol class="rooms" type="A">
+              <li class="room">
+                <input type="checkbox" id="19" />
+                <label for="19">19</label>
+              </li>
+              <li class="room">
+                <input type="checkbox" id="20" />
+                <label for="20">20</label>
+              </li>
+              <li class="room">
+                <input type="checkbox" id="21" />
+                <label for="21">21</label>
+              </li>
+              <li class="room">
+                <input type="checkbox" id="22" />
+                <label for="22">22</label>
+              </li>
+              <li class="room">
+                <input type="checkbox" id="23" />
+                <label for="23">23</label>
+              </li>
+              <li class="room">
+                <input type="checkbox" id="24" />
+                <label for="24">24</label>
+              </li>
+            </ol>
+          </li>
+          <li class="row row--5" >
+            <ol class="rooms" type="A">
+              <li class="room">
+                <input type="checkbox" id="25" />
+                <label for="25">25</label>
+              </li>
+              <li class="room">
+                <input type="checkbox" id="26" />
+                <label for="26">26</label>
+              </li>
+              <li class="room">
+                <input type="checkbox" id="27" />
+                <label for="27">27</label>
+              </li>
+              <li class="room">
+                <input type="checkbox" id="28" />
+                <label for="28">28</label>
+              </li>
+              <li class="room">
+                <input type="checkbox" id="29" />
+                <label for="29">29</label>
+              </li>
+              <li class="room">
+                <input type="checkbox" id="30" />
+                <label for="30">30</label>
+              </li>
+            </ol>
+          </li>
+          <li class="row row--6">
+            <ol class="rooms" type="A">
+              <li class="room">
+                <input type="checkbox" id="31" />
+                <label for="31">31</label>
+              </li>
+              <li class="room">
+                <input type="checkbox" id="32" />
+                <label for="32">32</label>
+              </li>
+              <li class="room">
+                <input type="checkbox" id="33" />
+                <label for="33">33</label>
+              </li>
+              <li class="room">
+                <input type="checkbox" id="34" />
+                <label for="34">34</label>
+              </li>
+              <li class="room">
+                <input type="checkbox" id="35" />
+                <label for="35">35</label>
+              </li>
+              <li class="room">
+                <input type="checkbox" id="36"/>
+                <label for="36">36</label>
+              </li>
+            </ol>
+          </li>
+     
+        </ol>
+        <form action="/room-allot" method = "post"> 
+            <input type="text" name="Room_No" id="room_no"  style="display:none">
+       <button type="submit" class = "btn btn-primary my-2" id="proceed_pay" disabled>Proceed</button>
+       </form>
+      </div>
+      <script>
+          var res_code = 0
+          var all_rooms = document.getElementsByTagName("input")
+          for(let i=0;i<all_rooms.length;i++){
+              all_rooms[i].onclick = () =>{
+                  if(res_code==0){
+                    document.getElementById("room_no").value = all_rooms[i].id
+                      for(let j=0;j<all_rooms.length;j++){
+                          if(j!=i){
+                              all_rooms[j].disabled = true
+                             
+                          }
+                    }
+                    res_code =1;
+                    document.getElementById("proceed_pay").disabled = false;
+                  }
+                  else if(res_code==1){
+                 
+                      for(let j=0;j<all_rooms.length;j++){
+                          if(j!=i && all_rooms[j].id!="1"){
+                              all_rooms[j].disabled = false
+                          }
+                    }
+                    res_code =0;
+                    document.getElementById("proceed_pay").disabled = true;
+                    document.getElementById("room_no").value = ""
+                  }
+          }
+        }
+        function Validate(){
+            var all_rooms = document.getElementsByTagName("input")
+            for(let i=0;i<all_rooms.length;i++){
+                if(all_rooms[i].checked){
+                    document.getElementById("room_no").value = all_rooms[i].id
+                }
+
+            }
+        }
+      </script>
+</body>
+</html>
